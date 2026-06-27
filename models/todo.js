@@ -4,11 +4,11 @@ const TodoSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, "A todo title is mandatory"],
-    trim: true, // Automatically cuts off accidental trailing spaces
+    trim: true,
   },
   completed: {
     type: Boolean,
-    default: false, // New tasks are uncompleted by default
+    default: false, 
   },
 }, { timestamps: true });
 
