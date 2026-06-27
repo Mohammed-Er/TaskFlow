@@ -10,9 +10,13 @@ app.get("/", (req, res) => {
   res.send("Todo API Running");
 });
 
+app.post("/test", (req, res) => {
+  console.log(req.body);
+  res.json(req.body);
+});
 app.use("/api/todos", todoRoutes);
 
 app.use("/api/users", authRoutes);
 
-app.use(errorHandler)
+app.use(errorHandler);
 export default app;
