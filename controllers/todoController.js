@@ -5,6 +5,7 @@ export const createTodo = async (req, res, next) => {
     const { title } = req.body;
     const newTodo = await Todo.create({
       title,
+      user: req.user._id,
     });
 
     res.status(201).json({
@@ -18,7 +19,9 @@ export const createTodo = async (req, res, next) => {
 
 export const getTodos = async (req, res, next) => {
   try {
-    const todos = await Todo.find({});
+    const todos = await Todo.find({
+      user: req.user._id,
+    });
     res.status(200).json({
       success: true,
       count: todos.length,
@@ -31,10 +34,17 @@ export const getTodos = async (req, res, next) => {
 
 export const updateTodo = async (req, res, next) => {
   try {
-    const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const updatedTodo = await Todo.findOneAndUpdate(
+      {
+        _id: req.params.id,
+        user: req.user._id
+      },
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
     if (!updatedTodo) {
       return res.status(404).json({
         success: false,
@@ -52,7 +62,10 @@ export const updateTodo = async (req, res, next) => {
 
 export const deleteTodo = async (req, res, next) => {
   try {
-    const deleteTodo = await Todo.findByIdAndDelete(req.params.id);
+    const deleteTodo = await Todo.findOneAndDelete({
+      _id: req.params.id,
+      user: req.user._id,
+    });
 
     if (!deleteTodo) {
       return res.status(404).json({

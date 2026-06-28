@@ -6,6 +6,11 @@ const TodoSchema = new mongoose.Schema({
     required: [true, "A todo title is mandatory"],
     trim: true,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   completed: {
     type: Boolean,
     default: false, 

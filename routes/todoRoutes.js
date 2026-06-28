@@ -1,5 +1,5 @@
 import express from "express";
-// import authMiddleware from "../middleware/authMiddleware.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 import {
   createTodo,
   getTodos,
@@ -9,8 +9,14 @@ import {
 
 const router = express.Router();
 
-router.route("/").get(getTodos).post(createTodo);
+router
+  .route("/")
+  .get(authMiddleware, getTodos)
+  .post(authMiddleware, createTodo);
 
-router.route("/:id").put(updateTodo).delete(deleteTodo);
+router
+  .route("/:id")
+  .put(authMiddleware, updateTodo)
+  .delete(authMiddleware, deleteTodo);
 
 export default router;
