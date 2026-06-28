@@ -1,68 +1,110 @@
-# 📝 Minimalist Todo CRUD API
+# 📝 Minimalist Todo API
 
-A RESTful backend API built with Node.js, Express, and MongoDB. This project demonstrates clean backend architecture, environment variable management, MongoDB integration using Mongoose, and complete CRUD operations for a Todo application.
-
-## ✨ Features
-
-* ✅ Full CRUD functionality (`Create`, `Read`, `Update`, `Delete`)
-* ✅ MongoDB integration using Mongoose ODM
-* ✅ Data validation and sanitization through Mongoose Schemas
-* ✅ Environment variable isolation with Dotenv
-* ✅ Modular project structure with separated concerns
-* ✅ ES Modules syntax support
-
-## 🛠️ Tech Stack
-
-* **Runtime:** Node.js
-* **Framework:** Express.js
-* **Database:** MongoDB
-* **ODM:** Mongoose
-* **Environment Variables:** Dotenv
+A secure RESTful backend API built with **Node.js**, **Express.js**, and **MongoDB**. This project demonstrates modern backend development practices including MVC architecture, JWT authentication, password hashing, protected routes, MongoDB integration with Mongoose, and complete CRUD operations for a multi-user Todo application.
 
 ---
 
-## 🚀 Getting Started
+## ✨ Features
 
-### 1. Clone the Repository
+* ✅ Complete CRUD functionality (`Create`, `Read`, `Update`, `Delete`)
+* ✅ User registration and login
+* ✅ Password hashing with **bcryptjs**
+* ✅ JWT authentication and authorization
+* ✅ Protected routes using authentication middleware
+* ✅ Multi-user Todo ownership
+* ✅ Users can only access their own Todos
+* ✅ MongoDB integration using Mongoose
+* ✅ Schema validation and sanitization
+* ✅ Centralized error handling middleware
+* ✅ Environment variable management with Dotenv
+* ✅ MVC (Model-View-Controller) architecture
+* ✅ ES Modules support
+
+---
+
+## 🛠️ Tech Stack
+
+| Category              | Technology            |
+| --------------------- | --------------------- |
+| Runtime               | Node.js               |
+| Framework             | Express.js            |
+| Database              | MongoDB               |
+| ODM                   | Mongoose              |
+| Authentication        | JSON Web Tokens (JWT) |
+| Password Hashing      | bcryptjs              |
+| Environment Variables | Dotenv                |
+
+---
+
+# 📁 Project Structure
+
+```text
+.
+├── config/
+├── controllers/
+│   ├── authController.js
+│   └── todoController.js
+├── middleware/
+│   ├── authMiddleware.js
+│   └── errorHandler.js
+├── models/
+│   ├── Todo.js
+│   └── User.js
+├── routes/
+│   ├── authRoutes.js
+│   └── todoRoutes.js
+├── utils/
+│   └── generateToken.js
+├── app.js
+├── index.js
+└── .env
+```
+
+---
+
+#  Getting Started
+
+## 1. Clone the repository
 
 ```bash
 git clone https://github.com/Mohammed-Er/minimalist-todo-api.git
+
 cd minimalist-todo-api
 ```
 
-### 2. Install Dependencies
+## 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Configure Environment Variables
+## 3. Configure environment variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the project root.
 
 ```env
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_super_secret_key
 ```
-
-Replace `your_mongodb_connection_string` with either:
-
-* Your local MongoDB URI
-* A MongoDB Atlas connection string
 
 Example:
 
 ```env
+PORT=3000
 MONGO_URI=mongodb://localhost:27017/todo_db
+JWT_SECRET=myVerySecureSecretKey
 ```
 
-### 4. Start the Development Server
+---
+
+## 4. Start the development server
 
 ```bash
-npx nodemon index.js
+npm run dev
 ```
 
-The server should now be running at:
+Server:
 
 ```text
 http://localhost:3000
@@ -70,55 +112,28 @@ http://localhost:3000
 
 ---
 
-## 📡 API Endpoints
+# 📡 API Endpoints
 
-| Method | Endpoint         | Description             |
-| ------ | ---------------- | ----------------------- |
-| POST   | `/api/todos`     | Create a new todo       |
-| GET    | `/api/todos`     | Retrieve all todos      |
-| PUT    | `/api/todos/:id` | Update an existing todo |
-| DELETE | `/api/todos/:id` | Delete a todo           |
+## Authentication
 
----
-
-## 📷 API Demo
-
-![Postman Demo](assets/postman-demo.png)
+| Method | Endpoint              | Description           |
+| ------ | --------------------- | --------------------- |
+| POST   | `/api/users/register` | Register a new user   |
+| POST   | `/api/users/login`    | Login and receive JWT |
 
 ---
 
-## 📄 Example Request
+## Todos (Protected)
 
-### Create a Todo
+These endpoints require a valid JWT in the Authorization header.
 
-**POST** `/api/todos`
-
-```json
-{
-  "title": "Complete STEM project"
-}
+```
+Authorization: Bearer <your_token>
 ```
 
-### Response
-
-```json
-{
-  "_id": "685c...",
-  "title": "Complete STEM project",
-  "completed": false
-}
-```
-
----
-
-## 🎯 Learning Objectives
-
-This project was built to practice:
-
-* REST API development
-* Express.js fundamentals
-* MongoDB and Mongoose
-* Backend project organization
-* Environment variable management
-* CRUD operations
-* Error handling and validation
+| Method | Endpoint         | Description                |
+| ------ | ---------------- | -------------------------- |
+| GET    | `/api/todos`     | Get logged-in user's todos |
+| POST   | `/api/todos`     | Create a todo              |
+| PUT    | `/api/todos/:id` | Update                     |
+| DELETE | `/api/todos/:id` | Delete                     |
