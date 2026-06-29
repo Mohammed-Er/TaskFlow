@@ -1,139 +1,142 @@
-# 📝 Minimalist Todo API
+# 📝 TaskFlow
 
-A secure RESTful backend API built with **Node.js**, **Express.js**, and **MongoDB**. This project demonstrates modern backend development practices including MVC architecture, JWT authentication, password hashing, protected routes, MongoDB integration with Mongoose, and complete CRUD operations for a multi-user Todo application.
+A modern full-stack Todo application built with **Node.js, Express.js, MongoDB, HTML, CSS, and Vanilla JavaScript**.
+
+This project demonstrates secure authentication, RESTful APIs, CRUD operations, dynamic frontend rendering, and a responsive user interface.
 
 ---
 
-## ✨ Features
+## 🚀 Live Demo
 
-* ✅ Complete CRUD functionality (`Create`, `Read`, `Update`, `Delete`)
-* ✅ User registration and login
-* ✅ Password hashing with **bcryptjs**
-* ✅ JWT authentication and authorization
-* ✅ Protected routes using authentication middleware
-* ✅ Multi-user Todo ownership
-* ✅ Users can only access their own Todos
-* ✅ MongoDB integration using Mongoose
-* ✅ Schema validation and sanitization
-* ✅ Centralized error handling middleware
-* ✅ Environment variable management with Dotenv
-* ✅ MVC (Model-View-Controller) architecture
-* ✅ ES Modules support
+**🔗 Live Application:** \*\*
+
+---
+
+## Features
+
+### Authentication
+
+- ✅ User Registration
+- ✅ User Login
+- ✅ JWT Authentication
+- ✅ Protected Routes
+- ✅ Password Hashing with bcryptjs
+
+### Todo Management
+
+- ✅ Create Todos
+- ✅ Edit Todo Status
+- ✅ Delete Todos
+- ✅ Multi-user Support
+- ✅ Users can only access their own Todos
+
+### Frontend
+
+- ✅ Dynamic DOM Rendering
+- ✅ Live Todo Filtering
+- ✅ Remaining Tasks Counter
+- ✅ Progress Bar
+- ✅ Interactive UI Animations
+- ✅ Logout Functionality
+
+### Backend
+
+- ✅ RESTful API
+- ✅ MVC Architecture
+- ✅ MongoDB with Mongoose
+- ✅ Environment Variables
+- ✅ Centralized Error Handling
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category              | Technology            |
-| --------------------- | --------------------- |
-| Runtime               | Node.js               |
-| Framework             | Express.js            |
-| Database              | MongoDB               |
-| ODM                   | Mongoose              |
-| Authentication        | JSON Web Tokens (JWT) |
-| Password Hashing      | bcryptjs              |
-| Environment Variables | Dotenv                |
+| Frontend           | Backend    | Database |
+| ------------------ | ---------- | -------- |
+| HTML5              | Node.js    | MongoDB  |
+| CSS3               | Express.js | Mongoose |
+| Vanilla JavaScript | JWT        |          |
 
 ---
 
-# 📁 Project Structure
+## Project Structure
 
 ```text
 .
-├── config/
-├── controllers/
-│   ├── authController.js
-│   └── todoController.js
-├── middleware/
-│   ├── authMiddleware.js
-│   └── errorHandler.js
-├── models/
-│   ├── Todo.js
-│   └── User.js
-├── routes/
-│   ├── authRoutes.js
-│   └── todoRoutes.js
-├── utils/
-│   └── generateToken.js
-├── app.js
-├── index.js
-└── .env
+├── assets/
+├── back_end/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   ├── app.js
+│   ├── index.js
+│   └── .env
+│
+├── front_end/
+│   ├── forms/
+│   ├── logo/
+│   ├── scripts/
+│   ├── styles/
+│   └── index.html
+│
+├── package.json
+└── README.md
 ```
 
 ---
 
-#  Getting Started
+## 📡 API Endpoints
 
-## 1. Clone the repository
+### Authentication
 
-```bash
-git clone https://github.com/Mohammed-Er/minimalist-todo-api.git
+| Method | Endpoint              |
+| ------ | --------------------- |
+| POST   | `/api/users/register` |
+| POST   | `/api/users/login`    |
 
-cd minimalist-todo-api
-```
+### Todos
 
-## 2. Install dependencies
+Requires a valid JWT.
 
-```bash
-npm install
-```
-
-## 3. Configure environment variables
-
-Create a `.env` file in the project root.
-
-```env
-PORT=3000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_super_secret_key
-```
-
-Example:
-
-```env
-PORT=3000
-MONGO_URI=mongodb://localhost:27017/todo_db
-JWT_SECRET=myVerySecureSecretKey
-```
+| Method | Endpoint         |
+| ------ | ---------------- |
+| GET    | `/api/todos`     |
+| POST   | `/api/todos`     |
+| PUT    | `/api/todos/:id` |
+| DELETE | `/api/todos/:id` |
 
 ---
 
-## 4. Start the development server
+## 📸 Preview
 
-```bash
-npm run dev
-```
-
-Server:
-
-```text
-http://localhost:3000
-```
+![Todo Dashboard](./assets/dashboard.png)
+![Login Page](./assets/login.png)
+![Sign-Up Page](./assets/signup.png)
 
 ---
 
-# 📡 API Endpoints
+## What I Learned
 
-## Authentication
-
-| Method | Endpoint              | Description           |
-| ------ | --------------------- | --------------------- |
-| POST   | `/api/users/register` | Register a new user   |
-| POST   | `/api/users/login`    | Login and receive JWT |
+- Building RESTful APIs
+- JWT Authentication
+- MongoDB & Mongoose
+- MVC Architecture
+- Full CRUD Operations
+- DOM Manipulation
+- Event Delegation
+- Frontend State Management
+- Connecting a frontend to a backend API
+- Deploying a full-stack application
 
 ---
 
-## Todos (Protected)
+## 🔮 Future Improvements
 
-These endpoints require a valid JWT in the Authorization header.
-
-```
-Authorization: Bearer <your_token>
-```
-
-| Method | Endpoint         | Description                |
-| ------ | ---------------- | -------------------------- |
-| GET    | `/api/todos`     | Get logged-in user's todos |
-| POST   | `/api/todos`     | Create a todo              |
-| PUT    | `/api/todos/:id` | Update                     |
-| DELETE | `/api/todos/:id` | Delete                     |
+- Refactor frontend into modules
+- Responsive design
+- Due dates
+- Search functionality
+- Dark/Light Theme

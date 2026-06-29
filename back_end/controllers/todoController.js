@@ -37,11 +37,11 @@ export const updateTodo = async (req, res, next) => {
     const updatedTodo = await Todo.findOneAndUpdate(
       {
         _id: req.params.id,
-        user: req.user._id
+        user: req.user._id,
       },
       req.body,
       {
-        new: true,
+        returnDocument: "after",
         runValidators: true,
       },
     );

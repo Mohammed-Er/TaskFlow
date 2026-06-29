@@ -24,7 +24,7 @@ form.addEventListener("submit", async (e) => {
 
     if (response.ok) {
       localStorage.setItem("token", data.token); // Store the token in localStorage
-      window.location.href = "../index.html"; // Redirect to dashboard or another page
+      window.location.href = "/minimalist-todo-api/front_end/index.html"; // Redirect to dashboard or another page
     } else {
       alert(
         data.message || "An error occurred while logging in. Please try again.",
