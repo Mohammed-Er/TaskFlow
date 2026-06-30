@@ -192,5 +192,5 @@ function refreshUI() {
 
 logoutBtn.addEventListener("click", function () {
   localStorage.removeItem("token");
-  window.location.href = "/forms/index.html";
+  window.location.href = "/forms/login.htm;";
 });
