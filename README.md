@@ -12,6 +12,17 @@ This project demonstrates secure authentication, RESTful APIs, CRUD operations, 
 
 ---
 
+
+---
+
+## 📸 Preview
+
+![Todo Dashboard](./assets/dashboard.png)
+![Login Page](./assets/login.png)
+![Sign-Up Page](./assets/image.png)
+
+---
+
 ## Features
 
 ### Authentication
@@ -56,16 +67,6 @@ This project demonstrates secure authentication, RESTful APIs, CRUD operations, 
 | HTML5              | Node.js    | MongoDB  |
 | CSS3               | Express.js | Mongoose |
 | Vanilla JavaScript | JWT        |          |
-
----
-
----
-
-## 📸 Preview
-
-![Todo Dashboard](./assets/dashboard.png)
-![Login Page](./assets/login.png)
-![Sign-Up Page](./assets/image.png)
 
 ---
 
